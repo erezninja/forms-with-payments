@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Payments to Your Forms</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+
+        body {
+            font-family: 'Inter', sans-serif;
+            background: #f8fafc;
+        }
+
+        .primary-button {
+            background: #4338ca;
+            padding: 12px 24px;
+            border-radius: 6px;
+            color: white;
+            font-weight: 600;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .primary-button:hover {
+            background: #3730a3;
+            transform: translateY(-1px);
+        }
+
+        .secondary-button {
+            background: white;
+            padding: 12px 24px;
+            border-radius: 6px;
+            color: #4338ca;
+            border: 1px solid #e2e8f0;
+            font-weight: 500;
+            transition: all 0.2s ease;
+            display: inline-block;
+        }
+
+        .secondary-button:hover {
+            border-color: #4338ca;
+        }
+
+        .offer-badge {
+            background: rgba(67, 56, 202, 0.1);
+            color: #4338ca;
+            padding: 8px 16px;
+            border-radius: 16px;
+            font-weight: 500;
+            font-size: 14px;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .feature-card {
+            background: white;
+            border-radius: 12px;
+            padding: 24px;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+            transition: all 0.2s ease;
+        }
+
+        .feature-card:hover {
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transform: translateY(-2px);
+        }
+
+        .review-stars {
+            color: #eab308;
+            display: flex;
+            gap: 2px;
+        }
+
+        .brand-logo {
+            opacity: 0.6;
+            transition: opacity 0.2s ease;
+        }
+
+        .brand-logo:hover {
+            opacity: 1;
+        }
+    </style>
+</head>
+<body class="p-8">
+    <main class="max-w-4xl mx-auto">
+        <!-- Hero Section -->
+        <div class="text-center mb-16">
+            <span class="offer-badge mb-6">⚡ Limited Time Offer</span>
+            
+            <h1 class="text-4xl md:text-5xl font-bold text-gray-900 mb-6">
+                Add Payments to Your Forms<br>
+                <span class="text-indigo-600">In Just 5 Minutes</span>
+            </h1>
+            
+            <p class="text-xl text-gray-600 mb-8">
+                Start accepting payments today with our special 30% off launch discount
+            </p>
+
+            <div class="flex justify-center gap-4">
+                <a href="#" class="primary-button">Claim 30% Off Now</a>
+                <a href="#" class="secondary-button">Watch Demo</a>
+            </div>
+        </div>
+
+        <!-- Social Proof -->
+        <div class="grid grid-cols-4 gap-8 items-center justify-items-center mb-16">
+            <img src="/api/placeholder/120/40" alt="Brand 1" class="brand-logo">
+            <img src="/api/placeholder/120/40" alt="Brand 2" class="brand-logo">
+            <img src="/api/placeholder/120/40" alt="Brand 3" class="brand-logo">
+            
+            <div class="text-sm">
+                <div class="review-stars mb-1">★★★★★</div>
+                <div class="text-gray-600">4.9/5 from 1000+ reviews</div>
+            </div>
+        </div>
+
+        <!-- Features -->
+        <div class="grid md:grid-cols-3 gap-6 mb-16">
+            <div class="feature-card">
+                <h3 class="font-semibold mb-2">5-Minute Setup</h3>
+                <p class="text-gray-600">No coding required. Just connect your payment gateway and go live.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="font-semibold mb-2">Secure Payments</h3>
+                <p class="text-gray-600">PCI compliant with bank-grade encryption for all transactions.</p>
+            </div>
+            <div class="feature-card">
+                <h3 class="font-semibold mb-2">Global Coverage</h3>
+                <p class="text-gray-600">Accept payments from 150+ countries in multiple currencies.</p>
+            </div>
+        </div>
+    </main>
+</body>
+</html>
