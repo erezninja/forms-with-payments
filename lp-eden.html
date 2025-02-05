@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Common Ninja Forms payment integration - Accept payments, sell products, and collect donations seamlessly">
+    <title>Payment Integration | Common Ninja Forms</title>
+    
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <style>
+        body { 
+            font-family: 'Inter', sans-serif;
+            background: #f8f5ff;
+        }
+
+        .feature-card {
+            transition: all 0.3s ease;
+            border: 1px solid #f3e8ff;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-4px);
+            border-color: #a855f7;
+        }
+
+        .hover-overlay {
+            position: relative;
+            isolation: isolate;
+        }
+        
+        .hover-overlay::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background-color: transparent;
+            transition: background-color 0.3s ease-in-out;
+        }
+        
+        .hover-overlay:hover::after {
+            background-color: rgba(0, 0, 0, 0.1);
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-4 focus:left-4 bg-blue-600 text-white px-4 py-2 rounded-md">
+        Skip to main content
+    </a>
+
+    <header class="w-full bg-black py-4 text-white" role="banner">
+        <div class="container mx-auto px-4">
+            <!-- Mobile Menu -->
+            <div class="flex sm:hidden items-center justify-between w-full">
+                <a href="/" class="inline-block">
+                    <img src="https://website-assets.commoninja.com/distribution/1738760287249_logo-light.png" alt="Common Ninja" class="h-8" width="132" height="32">
+                </a>
+                <button class="text-white p-2" aria-label="Toggle Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+
+            <!-- Desktop Menu -->
+            <div class="hidden sm:flex sm:items-center sm:justify-between">
+                <div class="flex items-center gap-8">
+                    <a href="/" class="inline-block">
+                        <img src="https://website-assets.commoninja.com/distribution/1738760287249_logo-light.png" alt="Common Ninja" class="h-8" width="132" height="32">
+                    </a>
+                    <nav aria-label="Desktop navigation">
+                        <ul class="flex items-center gap-6">
+                            <li><span class="text-white px-2 py-1">Common Ninja Forms</span></li>
+                            <li><a href="https://www.commoninja.com/dashboard" class="hover:text-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 rounded-md px-2 py-1">Your Dashboard</a></li>
+                        </ul>
+                    </nav>
+                </div>
+                <a href="https://www.commoninja.com/widgets?search=forms" class="bg-blue-600 px-6 py-2 rounded-md text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                    Create a Payment-Enabled Form
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Mobile Menu Overlay -->
+    <div class="fixed inset-0 bg-black bg-opacity-50 z-40 hidden" id="mobile-overlay"></div>
+    <div class="fixed inset-y-0 right-0 w-full max-w-sm bg-black transform translate-x-full transition-transform duration-300 ease-in-out z-50" id="mobile-menu">
+        <div class="p-6">
+            <div class="flex justify-end">
+                <button class="text-white" aria-label="Close Menu">
+                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                    </svg>
+                </button>
+            </div>
+            <nav aria-label="Mobile navigation" class="mt-8">
+                <ul class="flex flex-col gap-6">
+                    <li><span class="block text-white text-lg">Common Ninja Forms</span></li>
+                    <li><a href="https://www.commoninja.com/dashboard" class="block text-white hover:text-gray-400 text-lg">Your Dashboard</a></li>
+                    <li class="mt-8">
+                        <a href="https://www.commoninja.com/widgets?search=forms" class="block w-full bg-blue-600 px-4 py-3 rounded-md text-white text-center hover:bg-blue-700 text-lg font-medium">
+                            Create a Payment-Enabled Form
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+    <main id="main-content">
+        <!-- Hero Section -->
+        <section class="container mx-auto mt-16 px-4 md:px-10" aria-labelledby="hero-title">
+            <div class="flex flex-wrap md:flex-nowrap gap-8">
+                <div class="w-full md:w-1/2">
+                    <h1 id="hero-title" class="text-4xl md:text-6xl font-bold leading-tight text-gray-900">
+                        Transform Your Forms into Payment Powerhouses
+                    </h1>
+                    <p class="text-lg text-gray-700 mt-4">
+                        Accept payments, sell products, and collect donations seamlessly with our native payment integration.
+                    </p>
+                    <a href="https://www.commoninja.com/widgets?search=forms" class="mt-6 inline-block bg-blue-600 px-6 py-3 rounded-md text-white hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-colors">
+                        Create a Payment-Enabled Form
+                    </a>
+                </div>
+                <div class="w-full md:w-1/2">
+                    <img src="https://website-assets.commoninja.com/distribution/1738760133104_payment-hero.png" 
+                         alt="Payment form interface demonstration" 
+                         class="rounded-lg w-full"
+                         width="600"
+                         height="400">
+                </div>
+            </div>
+        </section>
+
+        <!-- Examples Section -->
+        <section class="container mx-auto mt-20 px-4 md:px-10" aria-labelledby="examples-title">
+            <h2 id="examples-title" class="text-xl font-semibold mb-4 border-b pb-2">Examples</h2>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <a href="https://commoninja.site/0bc434ac-43d2-4120-94ed-62d89ac0ec7c" class="group block bg-white p-4 rounded-lg shadow-md feature-card focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <img src="https://website-assets.commoninja.com/distribution/1738760156357_example-1.png" 
+                         alt="" 
+                         class="rounded-lg mb-4 w-full"
+                         width="400"
+                         height="300"
+                         loading="lazy">
+                    <h3 class="text-lg font-semibold group-hover:text-blue-600 transition-colors">Form with Products</h3>
+                    <p class="text-gray-600">Embed products directly into your form to boost sales.</p>
+                </a>
+                <a href="https://commoninja.site/d602160b-5f7f-40ca-9e9d-aff00fbeb19c" class="group block bg-white p-4 rounded-lg shadow-md feature-card focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <img src="https://website-assets.commoninja.com/distribution/1738760180376_example-2.png" 
+                         alt="" 
+                         class="rounded-lg mb-4 w-full"
+                         width="400"
+                         height="300"
+                         loading="lazy">
+                    <h3 class="text-lg font-semibold group-hover:text-blue-600 transition-colors">Form with Fixed Price</h3>
+                    <p class="text-gray-600">Set a fixed price for your form to simplify payment collection.</p>
+                </a>
+                <a href="https://commoninja.site/9a06f88d-8e02-403a-b1ef-b42c7a3d7570" class="group block bg-white p-4 rounded-lg shadow-md feature-card focus:outline-none focus:ring-2 focus:ring-blue-500">
+                    <img src="https://website-assets.commoninja.com/distribution/1738760196413_example-3.png" 
+                         alt="" 
+                         class="rounded-lg mb-4 w-full"
+                         width="400"
+                         height="300"
+                         loading="lazy">
+                    <h3 class="text-lg font-semibold group-hover:text-blue-600 transition-colors">Form with Flexible Pricing</h3>
+                    <p class="text-gray-600">Let users set their own price. Perfect for donations or pay-what-you-want models.</p>
+                </a>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="container mx-auto px-4 md:px-10 mt-20 mb-20" aria-labelledby="features-title">
+            <h2 id="features-title" class="text-2xl font-semibold">Features</h2>
+            <div class="border-b border-black w-full my-4" role="presentation"></div>
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-10 text-left">
+                <article>
+                    <img src="https://website-assets.commoninja.com/distribution/1738760258193_icon-secure.png" class="feature-icon" alt="Secure Payments">
+                    <h3 class="font-semibold">Secure Payments</h3>
+                    <p>Rest assured with trusted payment gateways ensuring every transaction is safe and reliable.</p>
+                </article>
+                <article>
+                    <img src="https://website-assets.commoninja.com/distribution/1738760209012_icon-bost.png" class="feature-icon" alt="Boost Revenue">
+                    <h3 class="font-semibold">Boost Revenue Effortlessly</h3>
+                    <p>Turn your forms into a powerful tool for selling and fundraising.</p>
+                </article>
+                <article>
+                    <img src="https://website-assets.commoninja.com/distribution/1738760222580_icon-easy-setup.png" class="feature-icon" alt="Easy Setup">
+                    <h3 class="font-semibold">Easy Setup</h3>
+                    <p>Get started in minutes—no coding required! Seamlessly integrate payments into your forms.</p>
+                </article>
+                <article>
+                    <img src="https://website-assets.commoninja.com/distribution/1738760242046_icon-flexible.png" class="feature-icon" alt="Flexible Payment Options">
+                    <h3 class="font-semibold">Flexible Payment Options</h3>
+                    <p>Collect one-time payments for products, services, or donations effortlessly.</p>
+                </article>
+            </div>
+        </section>
+
+        <!-- CTA Section -->
+        <section class="py-20 bg-gradient-to-r from-purple-500 to-pink-500 text-white text-center" aria-labelledby="cta-title">
+            <div class="container mx-auto px-4">
+                <h2 id="cta-title" class="text-3xl font-bold">Ready to Monetize Your Forms?</h2>
+                <p class="text-lg mt-2">Start collecting payments seamlessly today. No coding required!</p>
+                <a href="https://www.commoninja.com/widgets?search=forms" class="mt-6 inline-block bg-white text-black px-6 py-3 rounded-md hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-purple-500 transition-colors">
+                    Create a Payment-Enabled Form
+                </a>
+            </div>
+        </section>
+    </main>
+
+    <footer class="bg-gray-900 text-gray-400 py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <img src="https://website-assets.commoninja.com/distribution/1738760297578_logo.png" alt="Common Ninja" class="h-8 mb-4 brightness-0 invert">
+                    <p>Making web forms powerful and profitable.</p>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Product</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Features</a></li>
+                        <li><a href="#" class="hover:text-white">Pricing</a></li>
+                        <li><a href="#" class="hover:text-white">Documentation</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">About</a></li>
+                        <li><a href="#" class="hover:text-white">Blog</a></li>
+                        <li><a href="#" class="hover:text-white">Careers</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-white font-semibold mb-4">Legal</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#" class="hover:text-white">Privacy</a></li>
+                        <li><a href="#" class="hover:text-white">Terms</a></li>
+                        <li><a href="#" class="hover:text-white">Security</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 text-center">
+                <p>&copy; 2024 Common Ninja. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuBtn = document.querySelector('button[aria-label="Toggle Menu"]');
+            const closeMenuBtn = document.querySelector('button[aria-label="Close Menu"]');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const overlay = document.getElementById('mobile-overlay');
+
+            function toggleMenu() {
+                const isOpen = mobileMenu.classList.contains('translate-x-0');
+                mobileMenu.classList.toggle('translate-x-0');
+                mobileMenu.classList.toggle('translate-x-full');
+                overlay.classList.toggle('hidden');
+                document.body.classList.toggle('overflow-hidden');
+            }
+
+            mobileMenuBtn.addEventListener('click', toggleMenu);
+            closeMenuBtn.addEventListener('click', toggleMenu);
+            overlay.addEventListener('click', toggleMenu);
+        });
+    </script>
+</body>
+</html>
